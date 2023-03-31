@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "menu.h"
-extern enum function choose;
+//extern enum function choose;
 void menu()
 {
         printf("---------------------------------------\n");
