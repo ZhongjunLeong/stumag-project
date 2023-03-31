@@ -7,6 +7,7 @@ enum funtion
     student_find,
     quit
 };
+enum funtion choose;
 struct score
 {
   int id;

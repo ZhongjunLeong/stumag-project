@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "menu.h"
 
-
+extern enum funtion choose;
 int main(int argc, char  **argv)
 {
-    enum function choose = 0;
+
     struct score *s = NULL;    
   //  s->id = 100;
     while(1)
@@ -21,8 +21,8 @@ int main(int argc, char  **argv)
                 break;
             case student_find:
                     printf("enter student id :\n");
-                    scanf("%d\n",&s->id);
-                    stu_find(s->id);
+                  //  scanf("%d\n",&s->id);
+                    stu_find(100);
                 //fun2
                 break;
             case quit:
