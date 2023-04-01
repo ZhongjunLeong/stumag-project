@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include "menu.h"
-#include <stdlib.h>
-//extern enum funtion choose;
+
+extern enum funtion choose;
 int main(int argc, char  **argv)
 {
 
-    struct score *s = NULL;
-	int choose;    
+    struct score *s = NULL;    
   //  s->id = 100;
     while(1)
     {
         menu();
-        scanf("%d",&choose);
+        scanf("%u\n",&choose);
         switch(choose)
         {
             case student_info:
@@ -28,7 +27,7 @@ int main(int argc, char  **argv)
                 break;
             case quit:
                 //fun3
-                exit(1);
+                break;
             default:
                 break;
         }
