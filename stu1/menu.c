@@ -95,6 +95,8 @@ void stu_find(int stu_id)
   {
     printf("FIND:id:%d,name:%s,math:%d,chinses:%d\n",*cur->id,cur->name,cur->math,cur->chinese);
   }
+  else
+    printf("cannot find id\n");
   if(gl < 0)
   {
     printf("fail getline");
