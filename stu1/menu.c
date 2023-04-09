@@ -91,6 +91,7 @@ void stu_find(int stu_id)
  while(1)
  {
   gl = getline(&cur,&size,fd);
+  cur = (struct score*)cur;
   if(*cur->id == stu_id)
   {
     printf("FIND:id:%d,name:%s,math:%d,chinses:%d\n",*cur->id,cur->name,cur->math,cur->chinese);
