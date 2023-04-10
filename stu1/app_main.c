@@ -6,6 +6,7 @@ int main(int argc, char  **argv)
 {
 
     struct score *s = NULL;    
+    int id;
 //   extern enum funtion choose;
     while(1)
     {
@@ -21,8 +22,8 @@ int main(int argc, char  **argv)
                 break;
             case student_find:
                     printf("enter student id :\n");
-                  //  scanf("%d\n",&s->id);
-                    stu_find(100);
+                    scanf("%d",&id);
+                    stu_find(id);
                 //fun2
                 break;
             case quit:

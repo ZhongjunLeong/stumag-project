@@ -76,12 +76,8 @@ void stu_find(int stu_id)
   ssize_t gl;
   FILE *fd;
   char *cur = NULL;
-  cur = malloc(size * sizeof(char));
-  if(cur == NULL)
-  {
-    perror("unable to allocate cur");
-    exit(1);
-  }
+  struct score *CUR;
+//  cur = malloc(size * sizeof(char));
   fd = fopen(FNAME,"r");
   if(fd == NULL)
   {
@@ -91,12 +87,17 @@ void stu_find(int stu_id)
  while(1)
  {
   gl = getline(&cur,&size,fd);
-  if(*cur->id == stu_id)
+  CUR = (struct score*)cur;
+  if(CUR->id == stu_id)
   {
-    printf("FIND:id:%d,name:%s,math:%d,chinses:%d\n",*cur->id,cur->name,cur->math,cur->chinese);
+    printf("FIND:id:%d,name:%s,math:%d,chinses:%d\n",CUR->id,CUR->name,CUR->math,CUR->chinese);
+    break;
   }
   else
+  {
     printf("cannot find id\n");
+    break;
+  }
   if(gl < 0)
   {
     printf("fail getline");
@@ -104,6 +105,7 @@ void stu_find(int stu_id)
   }
   printf("getline return num:%d\n",gl);
  }
-  free(cur);
+  //free(CUR);
 //  return 0;
+  close(fd);
 }
