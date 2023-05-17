@@ -35,6 +35,7 @@ void stu_insert(sqlite3 *db)
         fprintf(stderr,"sqlite_exec fail:%s\n",errmsg);
         exit(1);
     }
+    exit(0);
 }
 
 
