@@ -2,7 +2,15 @@
 #include <stdlib.h>
 #include <sqlite3.h>
 #include "menu.h"
-extern enum funtion choose;
+enum funtion
+{
+    student_info = 1,
+    student_find,
+    stuinfo_insert,
+    stuinfo_update,
+    quit
+};
+enum funtion choose;
 int main( )
 {
         sqlite3 *db;
