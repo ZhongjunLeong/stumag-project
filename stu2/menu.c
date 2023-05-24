@@ -13,7 +13,29 @@ void menu()
         printf("---------------------------------------\n");
 }
 
+int open_create(sqlite3 *db)
+{
+        char *errmsg;
+        if(sqlite3_open(DATABASE,&db) != SQLITE_OK)
+        {
+            printf("%s\n",sqlite3_errmsg(db));
+            exit(1);
+        }
+        else
+        {
+            printf("open DATABASE success.\n");
+        }
 
+        if(sqlite3_exec(db,"create table stu(id Integer,name char,score Integer);",NULL,NULL,&errmsg) != SQLITE_OK)
+        {
+            printf("create table fail:%s\n",errmsg);
+            sqlite3_close(db);
+            exit(1);
+        }
+        else
+            printf("sqlite_exec():success\n");
+        return 0;
+}
 void stu_insert(sqlite3 *db)
 {
     char *errmsg;
@@ -21,6 +43,10 @@ void stu_insert(sqlite3 *db)
     int id;
     int score;
     char name[NAMESIZE];
+    if(db == NULL)
+    {
+        open_create(db);
+    }
     printf("insert id:\n");
     scanf("%d",&id);
     getchar();
@@ -33,9 +59,11 @@ void stu_insert(sqlite3 *db)
     if(sqlite3_exec(db,sql,NULL,NULL,&errmsg) != SQLITE_OK)
     {
         fprintf(stderr,"sqlite_exec fail:%s\n",errmsg);
+        sqlite3_close(db);
         exit(1);
     }
-    exit(0);
+    sqlite3_close(db);
+        return ;
 }
 
 
@@ -48,6 +76,11 @@ void info_show_st(sqlite3 *db)
     char *errmsg;
     int index ;
     int i,j;
+    if(db == NULL)
+    {
+        printf("nothing in table,please insert\n");
+        return ;
+    }
     sprintf(sql,"select * from stu");
     if(sqlite3_get_table(db,sql,&resultp,&nrow,&ncolumn,&errmsg) != SQLITE_OK)
     {

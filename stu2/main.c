@@ -11,28 +11,9 @@ enum funtion
     quit
 };
 enum funtion choose;
+sqlite3 *db = NULL;
 int main( )
-{
-        sqlite3 *db;
-        char *errmsg;
-        if(sqlite3_open(DATABASE,&db) != SQLITE_OK)
-        {
-            printf("%s\n",sqlite3_errmsg(db));
-            exit(1);
-        }
-        else
-        {
-            printf("open DATABASE success.\n");
-        }
-
-       //create a schema 
-        if(sqlite3_exec(db,"create table stu(id Integer,name char,score Integer);",NULL,NULL,&errmsg) != SQLITE_OK)
-        {
-            printf("%s\n",errmsg);
-            exit(1);
-        }
-
-//   extern enum funtion choose;
+{//   extern enum funtion choose;
     while(1)
     {
         menu();
@@ -63,5 +44,6 @@ int main( )
         }
     
     }
+  //  sqlite3_close(db);
     return 0;
 }
