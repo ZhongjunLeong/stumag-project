@@ -11,9 +11,10 @@ enum funtion
     quit
 };
 enum funtion choose;
-sqlite3 *db = NULL;
 int main( )
 {//   extern enum funtion choose;
+    sqlite3* db;
+    db = (sqlite3 *)sqlite_init();
     while(1)
     {
         menu();

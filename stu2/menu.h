@@ -1,10 +1,11 @@
 #ifndef _MENU_H
 #define _MENU_H
-
+#include <sqlite3.h>
 #define DATABASE "stu.db"
 
 void menu();
-int open_create(sqlite3 *db);
+sqlite3 *open_create(void );
+sqlite3 *sqlite_init();
 void info_show_st(sqlite3 *db);
 void stu_find(sqlite3 *db);
 void stu_update(sqlite3 *db);
